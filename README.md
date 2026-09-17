@@ -1,126 +1,68 @@
 # ai-skills
 
-我把日常在用的 AI Agent 技能抽出来分享。
+> **Agent 是汽车，skill 就是老司机。**
+> 车再好，没有会开的人，照样撞墙。
 
-不过说实话，**我想提供的不是工具，是思想**——每个 skill 背后都有一个能独立成立的主张（"任何需求都是增删查改的变体""没依据的决定不许做""产出存在不等于达标""最小改动指的是爆炸半径最小"）。skill 只是这些主张的一个可执行外壳。所以每个 skill 都配了一篇讲清"它为什么存在"的文章。
+你有没有遇到过这几种情况？
 
-**目前 9 个，全部零依赖**，复制过去就能用，不用装任何东西。
+- 让 AI 加个按钮，它确实加了——但点击报错，也没做权限控制
+- 用户说某个业务不好用，还举了例子，但你无从查起
+- 需求是实现了，但改的文件太多，一大半根本没必要动
+- 你什么都没说，它顺手"优化"了一下，结果出问题了
+
+这些都不是"AI 不够聪明"，是**它没有一套做事的方法**。
+
+这里是我日常攒下来的 9 个 skill。它们不教 AI 变聪明，而是给它一套**可以检查的工作方式**——每个 skill 都能装进 AI，也都配了一篇讲清"它为什么存在"的文章。
 
 ## 一句话安装（复制给任意 AI）
-
-把下面这段发给你在用的 AI（Cursor / Claude Code / WorkBuddy 都行），它会自己读完仓库、装到正确位置、并**实际验证一遍**：
 
 ```
 请访问 https://github.com/JeffChan702/ai-skills
 
-任务：把这个仓库里的所有 skill 安装到我的 skills 目录。
+把这个仓库里所有 skill 装到我的 skills 目录（按我在用的工具选一个）：
+- Cursor：~/.cursor/skills/
+- Claude Code：~/.claude/skills/
+- WorkBuddy：~/.workbuddy/skills/
 
-1. 先判断我在用哪个工具，对应目录是：
-   - Cursor：~/.cursor/skills/
-   - Claude Code：~/.claude/skills/
-   - WorkBuddy：~/.workbuddy/skills/
-2. 每个 skill 建一个同名文件夹，把它的 SKILL.md 原样放进去（不要改内容）。
-   fake-success-guard 是个 JS 模块，直接把整个目录放进去即可。
-3. 装完以后，对照每个 skill 自己的 README 里「怎么简单测试」那一节，
-   逐条真的跑一遍验证，不要只看文件在不在。
-4. 最后给我一张表：skill 名 / 装到哪 / 验证是否通过 / 不通过的具体原因。
+每个 skill 建一个同名文件夹，把 SKILL.md 原样放进去。
+装完对照每个 skill 自己的 README 里「怎么简单测试」那一节，真的跑一遍——
+不要只看文件在不在。最后给我一张表：skill 名 / 装到哪 / 验证通过没 / 不通过的原因。
 ```
 
-只想装某一个？把「所有 skill」换成名字就行。
+只想装一个？把「所有 skill」换成名字即可。
 
-## 从哪开始
+## 遇到什么情况，装哪个
 
-**如果你是第一次来**，先看 `trustworthy-ai`——它是总纲，并且里面有一组**不需要安装任何东西**就能用的「万能四问」。
+| 你遇到的情况 | 用这个 |
+|---|---|
+| 它自己乱定东西、顺手改，结果改坏了 | [**evidence-first**](evidence-first/README.md) + [**blast-radius**](blast-radius/README.md) |
+| 需求理解偏了，做完了才发现不对 | [**requirement-anchor**](requirement-anchor/README.md) |
+| 出了问题，不知道该从哪查起 | [**three-cards**](three-cards/README.md) |
+| 它说做完了，其实是半成品 | [**false-done**](false-done/README.md) |
+| 长任务跑到一半开始忘事、会话崩掉 | [**context-guard**](context-guard/README.md) |
+| 判断不了它到底做没做 | [**fake-success-guard**](fake-success-guard/README.md) |
+| 邮件发出去排版全乱 | [**mail-html-lite**](mail-html-lite/README.md) |
+| 想知道"到底该问 AI 什么" | [**trustworthy-ai**](trustworthy-ai/README.md) |
 
-**如果你有具体痛点**，直接跳到对应那一类。
-
-## 分四类
-
-### 〇、总纲
-
-| skill | 一句话作用 | 详细说明 |
-|---|---|---|
-| **trustworthy-ai** | 和 AI 协作的总纪律：让产出可被信任 + 万能四问 | [README](trustworthy-ai/README.md) |
-
-### 一、纪律类 —— 约束 AI 怎么干活（横切所有任务）
-
-不解决具体问题，约束的是**做事的方式**。如果你只装三个，装这三个。
-
-| skill | 一句话作用 | 详细说明 |
-|---|---|---|
-| **evidence-first** | 没依据的决定不许做 | [README](evidence-first/README.md) |
-| **false-done** | 产出存在不等于做完了 | [README](false-done/README.md) |
-| **context-guard** | 上下文是工作台，不是硬盘 | [README](context-guard/README.md) |
-
-### 二、流程类 —— 一件事从进来到收尾
-
-| skill | 一句话作用 | 详细说明 |
-|---|---|---|
-| **requirement-anchor** | 把需求锚定成 12 格矩阵，锁死边界再动手 | [README](requirement-anchor/README.md) |
-| **blast-radius** | 改共享代码前先减小爆炸半径：基线锁定、一次一轴、加法优先 | [README](blast-radius/README.md) |
-| **three-cards** | 把故障拆成三道填空题，前两张卡不需要懂原理 | [README](three-cards/README.md) |
-| **mail-html-lite** | 邮件正文的轻量 HTML 排版，段落不挤、标题分得清 | [README](mail-html-lite/README.md) |
-
-### 三、代码类 —— 可直接引入的模块
-
-| skill | 一句话作用 | 详细说明 |
-|---|---|---|
-| **fake-success-guard** | 判断一次 LLM 调用是真成功还是「假成功」 | [README](fake-success-guard/README.md) |
-
-## 哪些能串起来用
-
-### 组合 A：一件事的完整闭环
+## 或者，按一件事的流程看
 
 ```
 requirement-anchor → blast-radius → [写代码] → three-cards → mail-html-lite
    锁死需求边界       减小爆炸半径                 出问题排查      结论发出去
 ```
 
-1. **requirement-anchor** 先把需求拆成 12 格：产品层 / 数据层 / 展示层 × 增删查改。每格必须带证据和**验收判定**，🟡🔴 的格子明确标出来——那些就是后面最可能返工的地方
-2. **blast-radius** 在动手前把改动规划好：钉住基线、一次只动一条轴、加法优先、写清**守恒项**（本来对的地方不许弄坏）
-3. 照着计划写代码
-4. 做完发现不对，用 **three-cards** 把模糊现象结构化：发生了什么（动作 → 结果）、发生在哪、为什么
-5. 排查结论用 **mail-html-lite** 排成一封能直接发出去的邮件
+从"接需求"到"发结论"的完整一圈。最容易脱节的四件事——需求理解、动手方式、问题排查、结论汇报——各自有一个 skill 接住。
 
-这条链覆盖「一件事从进来到收尾」的全过程——**最容易脱节的四件事（需求理解、动手方式、问题排查、结论汇报）被接成了一条线。**
+而 [**trustworthy-ai**](trustworthy-ai/README.md) 是横向的总纲：**可信任不是"它说得对"，而是"它说的每句话都能被查"**，里面那四个问题不装任何东西也能直接拿去用。
 
-### 组合 B：纪律类横跨在上面所有环节之上
+## 每个 skill 长什么样
 
-```
-evidence-first  ┐
-false-done      ├── 约束下面每一个环节
-context-guard   ┘
+每个目录下两份文件：
 
-requirement-anchor → blast-radius → 写代码 → three-cards → mail-html-lite
-```
+- **`SKILL.md`** — 可以直接装进 AI 的规则
+- **`README.md`** — 讲清它解决什么、怎么装、**怎么用一句话验证它装对了**
 
-三个纪律 skill 各管一头，合起来是一句话：**前面不许乱猜，后面不许假报，中间别把工作台堆爆。**
-
-- **evidence-first** 管开工前：锚定需求时不许编格子，排查时不许编原因
-- **false-done** 管交付时：说"做完了"之前，先拿出验证动作
-- **context-guard** 管过程：长任务里别让上下文撑爆
-
-而 **trustworthy-ai** 是这四条的统一视角——**可信任不是"它说得对"，而是"它说的每句话都能被查"。**
-
-### 组合 C：给 Agent 加一道「假成功」护栏（独立使用）
-
-```
-LLM / 工具调用  →  fake-success-guard  →  采信 or 重试
-```
-
-它不依赖其他 skill，直接接在任意调用之后，拦住「返回 200、文字通顺、但什么都没干」的情况。也可以只拿它当代码用，不装 skill。
-
-## 怎么装（手动）
-
-每个 skill 目录下都有一份 `SKILL.md`。在对应平台的 skills 目录下建一个**同名文件夹**，把 `SKILL.md` 放进去即可：
-
-| 工具 | skills 目录 |
-|---|---|
-| Cursor | `~/.cursor/skills/` |
-| Claude Code | `~/.claude/skills/` |
-| WorkBuddy | `~/.workbuddy/skills/` |
-
-**每个 skill 的详细作用、安装路径、验证方法、设计取舍和边界，都写在它自己的 README 里**——点上面表格里的链接进去看。
+零依赖。复制过去就能用，不用装任何东西，不用改配置。
 
 ## 许可
 
