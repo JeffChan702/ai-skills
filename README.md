@@ -55,14 +55,7 @@ requirement-anchor → blast-radius → [写代码] → three-cards → mail-htm
 
 而 [**trustworthy-ai**](trustworthy-ai/README.md) 是横向的总纲：**可信任不是"它说得对"，而是"它说的每句话都能被查"**，里面那四个问题不装任何东西也能直接拿去用。
 
-## 每个 skill 长什么样
-
-每个目录下两份文件：
-
-- **`SKILL.md`** — 可以直接装进 AI 的规则
-- **`README.md`** — 讲清它解决什么、怎么装、**怎么用一句话验证它装对了**
-
-零依赖。复制过去就能用，不用装任何东西，不用改配置。
+每个 skill 目录下两份文件：`SKILL.md`（装进 AI 的规则）+ `README.md`（解决什么、怎么装、**怎么用一句话验证**）。零依赖，复制就能用。
 
 ## 许可
 
