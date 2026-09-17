@@ -14,22 +14,17 @@
 
 这里是我日常攒下来的 9 个 skill。它们不教 AI 变聪明，而是给它一套**可以检查的工作方式**——每个 skill 都能装进 AI，也都配了一篇讲清"它为什么存在"的文章。
 
-## 一句话安装（复制给任意 AI）
+## 怎么用
+
+把这个链接丢给你的 AI Agent：
 
 ```
-请访问 https://github.com/JeffChan702/ai-skills
-
-把这个仓库里所有 skill 装到我的 skills 目录（按我在用的工具选一个）：
-- Cursor：~/.cursor/skills/
-- Claude Code：~/.claude/skills/
-- WorkBuddy：~/.workbuddy/skills/
-
-每个 skill 建一个同名文件夹，把 SKILL.md 原样放进去。
-装完对照每个 skill 自己的 README 里「怎么简单测试」那一节，真的跑一遍——
-不要只看文件在不在。最后给我一张表：skill 名 / 装到哪 / 验证通过没 / 不通过的原因。
+https://github.com/JeffChan702/ai-skills
 ```
 
-只想装一个？把「所有 skill」换成名字即可。
+它会自己读完、把 skill 装上。然后**新开一个窗口**，把你要做的事直接说给它——它会自己找到该用的 skill，不用你指定，也不用写什么约束。
+
+（想手动装也行：把对应目录下的 `SKILL.md` 复制到你的 skills 目录。）
 
 ## 遇到什么情况，装哪个
 
