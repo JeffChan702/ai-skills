@@ -12,45 +12,43 @@
 
 这些都不是"AI 不够聪明"，是**它没有一套做事的方法**。
 
-这里是我日常攒下来的 9 个 skill。它们不教 AI 变聪明，而是给它一套**可以检查的工作方式**——每个 skill 都能装进 AI，也都配了一篇讲清"它为什么存在"的文章。
-
 ## 怎么用
 
-把这个链接丢给你的 AI Agent：
+把这个链接丢给你的 agent（装一次就行）：
 
 ```
 https://github.com/JeffChan702/ai-skills
 ```
 
-它会自己读完、把 skill 装上。然后**新开一个窗口**，把你要做的事直接说给它——它会自己找到该用的 skill，不用你指定，也不用写什么约束。
+然后新开一个窗口，**丢给它一句话需求，或者一份需求文件**：
 
-（想手动装也行：把对应目录下的 `SKILL.md` 复制到你的 skills 目录。）
+```
+订单页加个导出按钮
+```
 
-## 遇到什么情况，装哪个
+```
+把 docs/需求.md 里的事做掉
+```
 
-| 你遇到的情况 | 用这个 |
+它会自己判断该用哪个 skill、自己钉住基线、自己去找依据——**用最小的改动把事情落地**。
+
+不用你指定用哪个 skill，也不用写什么约束。
+
+## 里面有什么
+
+| | |
 |---|---|
-| 它自己乱定东西、顺手改，结果改坏了 | [**evidence-first**](evidence-first/README.md) + [**blast-radius**](blast-radius/README.md) |
-| 需求理解偏了，做完了才发现不对 | [**requirement-anchor**](requirement-anchor/README.md) |
-| 出了问题，不知道该从哪查起 | [**three-cards**](three-cards/README.md) |
-| 它说做完了，其实是半成品 | [**false-done**](false-done/README.md) |
-| 长任务跑到一半开始忘事、会话崩掉 | [**context-guard**](context-guard/README.md) |
-| 判断不了它到底做没做 | [**fake-success-guard**](fake-success-guard/README.md) |
-| 邮件发出去排版全乱 | [**mail-html-lite**](mail-html-lite/README.md) |
-| 想知道"到底该问 AI 什么" | [**trustworthy-ai**](trustworthy-ai/README.md) |
+| evidence-first | 没依据的决定不许做 |
+| blast-radius | 改共享代码前，先减小爆炸半径 |
+| requirement-anchor | 需求锚定成 12 格矩阵，锁死边界 |
+| three-cards | 故障拆成三道填空题 |
+| false-done | 产出存在不等于做完了 |
+| context-guard | 上下文是工作台，不是硬盘 |
+| trustworthy-ai | 让产出可被信任 + 万能四问 |
+| fake-success-guard | 判断 LLM 调用是真成功还是假成功 |
+| mail-html-lite | 邮件正文的轻量 HTML 排版 |
 
-## 或者，按一件事的流程看
-
-```
-requirement-anchor → blast-radius → [写代码] → three-cards → mail-html-lite
-   锁死需求边界       减小爆炸半径                 出问题排查      结论发出去
-```
-
-从"接需求"到"发结论"的完整一圈。最容易脱节的四件事——需求理解、动手方式、问题排查、结论汇报——各自有一个 skill 接住。
-
-而 [**trustworthy-ai**](trustworthy-ai/README.md) 是横向的总纲：**可信任不是"它说得对"，而是"它说的每句话都能被查"**，里面那四个问题不装任何东西也能直接拿去用。
-
-每个 skill 目录下两份文件：`SKILL.md`（装进 AI 的规则）+ `README.md`（解决什么、怎么装、**怎么用一句话验证**）。零依赖，复制就能用。
+每个目录下有 `SKILL.md`（规则）和 `README.md`（说明、怎么验证）。零依赖。
 
 ## 许可
 
